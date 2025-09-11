@@ -38,4 +38,4 @@ function update(elapsed:Float) {
 }
 ```
 ## Known Issues
-- [] Still able to hit notes during replays
+- [ ] Still able to hit notes during replays
