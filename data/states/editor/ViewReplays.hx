@@ -64,11 +64,14 @@ class BuildData {
                     var date = data[0];
                     var time = StringTools.replace(data[1], "-", ":");
                     var date = Date.fromString(date+" "+time);
-                    var hours = date.getHours() % 12;
+                    var hours = date.getHours();
+                    var isAM = hours < 12;
+                    if (isAM) hours = hours % 12;
                     var minutes = date.getMinutes();
                     var seconds = date.getSeconds();
                     if (minutes < 10) minutes = "0"+minutes; if (seconds < 10) seconds = "0"+seconds;
                     var time = date.getDay()+ "/"+date.getMonth()+"/"+date.getFullYear()+" @ "+hours+":"+minutes+":"+seconds;
+                    time += (isAM) ? " AM" : " PM";
                     children.push({
                         type: TextOption,
                         name: StringTools.replace(StringTools.replace(time, REPLAY_MANAGER.FILE_EXT, ""), "@", "-"),
