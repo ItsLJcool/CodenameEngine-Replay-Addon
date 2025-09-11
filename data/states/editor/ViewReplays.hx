@@ -130,7 +130,7 @@ class BuildData {
 }
 
 function create() {
-    addMenu(new TreeMenuScreen("Customize your Build Export", "", null, parseData(BuildData.generate())));
+    addMenu(new TreeMenuScreen("View Replays", "", null, parseData(BuildData.generate())));
 }
 
 function parseData(data:Array<Dynamic>) {
