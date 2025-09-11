@@ -84,7 +84,7 @@ class BuildData {
                             var nameOrDiff = kms.pop();
                             var nullOrName = kms.pop();
 
-                            var path = (depth == 3) ? nullOrName+"/"+nameOrDiff+"/"+diffOrVariation : nullOrName+"/"+diffOrVariation;
+                            var path = (depth == 3) ? nullOrName+"/"+nameOrDiff+"/"+diffOrVariation : nameOrDiff+"/"+diffOrVariation;
                             var valid = REPLAY_MANAGER.loadReplay(path, lol);
                             if (!valid) {
                                 child.locked = true;
