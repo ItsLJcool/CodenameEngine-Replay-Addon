@@ -1,0 +1,5 @@
+<menu name="Replay Options (Addon)" desc="Modify mod options here">
+
+    <checkbox id="recordEnabled" name="Enable Recording" desc="Records every song you play. You can view the recordings in the `./records` folder."/>
+
+</menu>
