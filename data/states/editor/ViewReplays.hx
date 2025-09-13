@@ -66,7 +66,7 @@ class BuildData {
                     var date = Date.fromString(date+" "+time);
                     var hours = date.getHours();
                     var isAM = hours < 12;
-                    if (isAM) hours = hours % 12;
+                    hours = (hours % 12);
                     var minutes = date.getMinutes();
                     var seconds = date.getSeconds();
                     if (minutes < 10) minutes = "0"+minutes; if (seconds < 10) seconds = "0"+seconds;

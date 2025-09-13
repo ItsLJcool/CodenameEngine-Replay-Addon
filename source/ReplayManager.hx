@@ -119,13 +119,10 @@ class ReplayManager {
         var bytes = new BytesInput(File.getBytes(export_path));
         var version = bytes.readInt32();
         if (version != VERSION && !COMPATABLE_VERSIONS.contains(version)) {
-            switch (version) { // parse older versions here
-                default:
-                    _log([
-                    Logs.logText("This Replay is ", -1), Logs.logText("Outdated", 12), Logs.logText(" or ", -1), Logs.logText("not Compatable", 6),
-                    Logs.logText(", (This Version: ", -1), Logs.logText(version, 6), Logs.logText(" - Current Version: ", -1), Logs.logText(VERSION, 6), Logs.logText(")", -1)
-                    ]);
-            }
+            _log([
+                Logs.logText("This Replay is ", -1), Logs.logText("Outdated", 12), Logs.logText(" or ", -1), Logs.logText("not Compatable", 6),
+                Logs.logText(", (This Version: ", -1), Logs.logText(version, 6), Logs.logText(" - Current Version: ", -1), Logs.logText(VERSION, 6), Logs.logText(")", -1)
+            ]);
             return false;
         }
 

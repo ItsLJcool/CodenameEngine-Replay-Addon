@@ -1,18 +1,25 @@
 //a
 if (PlayState.chartingMode) return disableScript();
 import Date;
+import funkin.backend.system.Logs;
 if (REPLAY_MANAGER.SHOULD_PLAYBACK) {
+    var prev_autoPause = FlxG.autoPause;
     var prev_validScore = PlayState.instance.validScore;
-    PlayState.instance.validScore = false;
+    PlayState.instance.validScore = FlxG.autoPause = false;
     if (REPLAY_MANAGER.USE_CONDUCTOR) REPLAY_MANAGER.playback();
     else function onSongStart() { REPLAY_MANAGER.playback(); }
     function destroy() {
         PlayState.instance.validScore = prev_validScore;
+        FlxG.autoPause = prev_autoPause;
         REPLAY_MANAGER.stop();
     }
 
     if (REPLAY_MANAGER.USE_CONDUCTOR) function onGamePause(e) {
-        if (REPLAY_MANAGER.PLAYBACK_EVENTS.length == 0) return;
+        
+        if (REPLAY_MANAGER.PLAYBACK_EVENTS.length == 0){
+            REPLAY_MANAGER._log([Logs.logText("Resyncing Vocals...", -1)]);
+            return resyncVocals();
+        }
         e.cancel();
     }
 
